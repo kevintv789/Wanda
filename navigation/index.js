@@ -1,32 +1,49 @@
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
-// import Browse from "../screens/Browse";
+import Browse from "../screens/Browse";
+import Forgot from "../screens/Forgot";
 // import Explore from "../screens/Explore";
 import { Image } from "react-native";
-// import Login from "../screens/Login";
+import Login from "../screens/Login";
 // import Product from "../screens/Product";
 import React from "react";
-// import Settings from "../screens/Settings";
+import Settings from "../screens/Settings";
+import Signup from "../screens/Signup";
 import Welcome from "../screens/Welcome";
 import { createStackNavigator } from "react-navigation-stack";
 import { theme } from "../constants";
 
-const screens = createSwitchNavigator(
+const screens = createStackNavigator(
   {
     Welcome,
-    // Login,
-    // Browse,
+    Login,
+    Signup,
+    Forgot,
+    Browse,
+    Settings
     // Explore,
     // Product,
-    // Settings,
   },
   {
     defaultNavigationOptions: {
-      headerStyle: {},
-      headerBackImage: <Image />,
-      headerBackTitle: null,
-      headerLeftContainerStyle: {},
-      headerRightContainerStyle: {},
+      headerStyle: {
+        height: theme.sizes.base * 5,
+        backgroundColor: theme.colors.white,
+        shadowColor: "transparent",
+        elevation: 0, // for android
+      },
+      headerBackImage: <Image source={require("../assets/icons/back.png")} />,
+      headerBackTitleVisible: false,
+      headerTitle: null,
+      headerLeftContainerStyle: {
+        alignItems: "center",
+        marginLeft: theme.sizes.padding * 1.2,
+        paddingRight: theme.sizes.base,
+      },
+      headerRightContainerStyle: {
+        alignItems: "center",
+        marginLeft: theme.sizes.base,
+      },
     },
   }
 );

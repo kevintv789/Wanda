@@ -1,4 +1,4 @@
-import { Animated, Dimensions, FlatList, Image, Modal, StyleSheet } from "react-native";
+import { Animated, Dimensions, FlatList, Image, Modal, ScrollView, StyleSheet } from "react-native";
 import { Block, Button, Text } from "../components";
 import React, { Component } from "react";
 
@@ -39,7 +39,7 @@ class Welcome extends Component {
           />
         )}
         onScroll={
-          Animated.event([{ nativeEvent: { contentOffset: { x: this.scrollX } } }])
+          Animated.event([{ nativeEvent: { contentOffset: { x: this.scrollX } } }], { useNativeDriver: false })
         }
       />
     );
@@ -72,11 +72,19 @@ class Welcome extends Component {
   renderTermsService = () => {
     return (
       <Modal animationType="slide" visible={this.state.showTerms}>
-        <Block padding={theme.sizes.padding} space="evenly">
+        <Block padding={[theme.sizes.padding * 2, theme.sizes.padding]} space="between">
           <Text h2 light>Terms of Service</Text>
-          <Text caption gray height={18}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <ScrollView style={{ paddingVertical: theme.sizes.padding }}>
+            <Text caption gray height={18}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </Text>
+            <Text caption gray height={18}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </Text>
+            <Text caption gray height={18}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </Text>
+          </ScrollView>
           <Button gradient onPress={() => this.setState({ showTerms: false })}>
             <Text center white>I understand</Text>
           </Button>
@@ -91,7 +99,7 @@ class Welcome extends Component {
 
     return (
       <Block>
-        <Block center middle flex={0.5}>
+        <Block center bottom flex={0.4}>
           <Text h1 center bold>
             Your Home.
             <Text h1 primary>
