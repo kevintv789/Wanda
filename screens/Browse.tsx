@@ -1,5 +1,5 @@
 import { Badge, Block, Button, Card, Text } from "../components";
-import { Image, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { Image, ScrollView, StyleSheet, TabBarIOS, TouchableOpacity } from "react-native";
 import React, { Component } from "react";
 import { mocks, theme } from "../constants";
 
@@ -8,7 +8,17 @@ class Browse extends Component {
 
   state = {
     active: "Products",
+    categories: this.props.categories
   };
+
+  handleTab = (tab: string) => {
+    const { categories } = this.props;
+    const filtered = categories.filter(
+      (category: any) => category.tags.includes(tab.toLowerCase())
+    );
+
+    this.setState({ active: tab, categories: filtered });
+  }
 
   renderTab = (tab: string, index: number) => {
     const { active } = this.state;
@@ -17,7 +27,7 @@ class Browse extends Component {
     return (
       <TouchableOpacity
         key={index}
-        onPress={() => this.setState({ active: tab })}
+        onPress={() => this.handleTab(tab)}
         style={[styles.tab, isActive ? styles.active : null]}
       >
         <Text size={16} medium gray={!isActive} secondary={isActive}>
@@ -28,7 +38,8 @@ class Browse extends Component {
   };
 
   render() {
-    const { profile, navigation, categories } = this.props;
+    const { profile, navigation } = this.props;
+    const { categories } = this.state;
     const tabs = ["Products", "Inspirations", "Shop"];
 
     return (

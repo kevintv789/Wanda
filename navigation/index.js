@@ -1,11 +1,11 @@
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
 import Browse from "../screens/Browse";
+import Explore from "../screens/Explore";
 import Forgot from "../screens/Forgot";
-// import Explore from "../screens/Explore";
 import { Image } from "react-native";
 import Login from "../screens/Login";
-// import Product from "../screens/Product";
+import Product from "../screens/Product";
 import React from "react";
 import Settings from "../screens/Settings";
 import Signup from "../screens/Signup";
@@ -20,9 +20,9 @@ const screens = createStackNavigator(
     Signup,
     Forgot,
     Browse,
-    Settings
-    // Explore,
-    // Product,
+    Settings,
+    Explore,
+    Product,
   },
   {
     defaultNavigationOptions: {

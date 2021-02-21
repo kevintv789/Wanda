@@ -1,12 +1,6 @@
-import { Badge, Block, Divider, Switch, Text } from "../components";
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
-import React, { Component, Profiler } from "react";
+import { Block, Divider, Switch, Text } from "../components";
+import { Image, ScrollView, StyleSheet, TextInput } from "react-native";
+import React, { Component } from "react";
 import { mocks, theme } from "../constants";
 
 import Slider from "react-native-slider";
